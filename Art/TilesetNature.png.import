@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0pd8umgilhgn"
-path="res://.godot/imported/TilesetHouse.png-7fc6e7f40ab3d9202032031f37362eb7.ctex"
+uid="uid://c1oaloj4lq1nu"
+path="res://.godot/imported/TilesetNature.png-5838dc1ee2c26a41f281aacb61709ed2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NinjaAdventure/Backgrounds/Tilesets/TilesetHouse.png"
-dest_files=["res://.godot/imported/TilesetHouse.png-7fc6e7f40ab3d9202032031f37362eb7.ctex"]
+source_file="res://Art/TilesetNature.png"
+dest_files=["res://.godot/imported/TilesetNature.png-5838dc1ee2c26a41f281aacb61709ed2.ctex"]
 
 [params]
 
