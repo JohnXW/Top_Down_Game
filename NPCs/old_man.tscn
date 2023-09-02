@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6finjfpreu7o"]
+
+[ext_resource type="Texture2D" uid="uid://3gsojea7cy7c" path="res://NinjaAdventure/Actor/Characters/OldMan3/SpriteSheet.png" id="1_j02wr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6bjn"]
+size = Vector2(14, 4)
+
+[node name="OldMan" type="CharacterBody2D"]
+z_index = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_j02wr")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_j6bjn")

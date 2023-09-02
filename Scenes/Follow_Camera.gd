@@ -6,8 +6,8 @@ func _ready():
 	var mapRect = tileMap.get_used_rect()
 	var tileSize = tileMap.cell_quadrant_size
 	var worldSizePixels = mapRect.size * tileSize
-	limit_right = worldSizePixels.x - 2*tileSize
-	limit_bottom = worldSizePixels.y - 2*tileSize
+	limit_right = worldSizePixels.x
+	limit_bottom = worldSizePixels.y
 	
 	
 

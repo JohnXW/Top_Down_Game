@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5lpcssqmb5cw"
-path="res://.godot/imported/Heart.png-aeb0e3ff3b4024597814b16b9ac5997c.ctex"
+path="res://.godot/imported/Heart.png-042374490257ff7573fbf86d5267eeee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NinjaAdventure/HUD/Heart.png"
-dest_files=["res://.godot/imported/Heart.png-aeb0e3ff3b4024597814b16b9ac5997c.ctex"]
+source_file="res://Art/Heart.png"
+dest_files=["res://.godot/imported/Heart.png-042374490257ff7573fbf86d5267eeee.ctex"]
 
 [params]
 
