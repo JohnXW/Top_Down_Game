@@ -68,7 +68,7 @@ func _on_vision_body_exited(body):
 
 
 func _on_slime_hit_box_area_entered(area):
-	if area.name == "Player":
+	if area.name == "Player": #will not work bc area will not be player
 		playerCanAttack = true
 
 

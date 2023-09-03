@@ -8,13 +8,13 @@ signal healthChange
 @onready var animations = $AnimationPlayer
 @onready var hurtEffect = $HitEffect
 @onready var HurtTimer = $HurtTimer
+@onready var AttackTImer = $AttackTimer
 @export var knockBackPower:int = 200
 #@onready var currentHP: int = PlayerVariables.currentHP
 var playerHurt:bool = false
 var enemyCollisions = []
-var lol:int = 0
 var movedirection
-var direction
+var direction = "down"
 var playerAttackingInProgress:bool = false
 
 func _ready():
@@ -22,18 +22,27 @@ func _ready():
 
 func handleInput():
 	movedirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
-	velocity = movedirection * speed
-	
-func updateAnimation(): 
-	if velocity.length() == 0:
-		# add attack anim here
-		animations.stop()
+	if playerAttackingInProgress == true:
+		velocity = Vector2.ZERO
 	else:
-		direction = "down"
-		if velocity.x < 0: direction = "left"
-		elif velocity.x > 0: direction = "right"
-		elif velocity.y < 0: direction = "up"
+		velocity = movedirection * speed
+
+func updateAnimation(): 
+	if Input.is_action_just_pressed("ui_attack"):
+		playerAttackingInProgress = true
+		animations.play("attack_" + direction)
+		AttackTImer.start()
+		await AttackTImer.timeout
+		playerAttackingInProgress = false
+	elif playerAttackingInProgress == false:
+		if velocity.length() == 0:
+			animations.stop()
+		
+		else:
+			direction = "down"
+			if velocity.x < 0: direction = "left"
+			elif velocity.x > 0: direction = "right"
+			elif velocity.y < 0: direction = "up"
 		
 		animations.play("walk_" + direction)
 	
@@ -67,7 +76,6 @@ func hurtByEnemy(area):
 	playerHurt = false
 
 func _on_hurt_box_area_entered(area):
-#	if iFrame: return
 	if area.name == "SlimeHitBox": 
 		enemyCollisions.append(area)
 

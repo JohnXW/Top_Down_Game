@@ -1,12 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6finjfpreu7o"]
+[gd_scene load_steps=11 format=3 uid="uid://c6finjfpreu7o"]
 
 [ext_resource type="Texture2D" uid="uid://3gsojea7cy7c" path="res://NinjaAdventure/Actor/Characters/OldMan3/SpriteSheet.png" id="1_j02wr"]
+[ext_resource type="Script" path="res://NPCs/old_man.gd" id="1_svfsh"]
+[ext_resource type="Texture2D" uid="uid://cde864r6hlmqo" path="res://NinjaAdventure/HUD/Dialog/DialogInfo.png" id="3_14q45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6bjn"]
 size = Vector2(14, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agcnt"]
+size = Vector2(24, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vscv6"]
+atlas = ExtResource("3_14q45")
+region = Rect2(0, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h44lh"]
+atlas = ExtResource("3_14q45")
+region = Rect2(20, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g81yx"]
+atlas = ExtResource("3_14q45")
+region = Rect2(40, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha3gu"]
+atlas = ExtResource("3_14q45")
+region = Rect2(60, 0, 20, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exhbw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vscv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h44lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g81yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha3gu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [node name="OldMan" type="CharacterBody2D"]
 z_index = 1
+script = ExtResource("1_svfsh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -15,5 +57,22 @@ hframes = 4
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_j6bjn")
+
+[node name="ConvoArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConvoArea"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_agcnt")
+
+[node name="DialogBubble" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -14)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_exhbw")
+frame = 1
+frame_progress = 0.565754
+
+[connection signal="body_entered" from="ConvoArea" to="." method="_on_convo_area_body_entered"]
+[connection signal="body_exited" from="ConvoArea" to="." method="_on_convo_area_body_exited"]
