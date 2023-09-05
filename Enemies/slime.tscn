@@ -263,6 +263,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_k85ld")
 
 [node name="Vision" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 rotation = 1.5708
 
@@ -270,6 +271,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_gnc3w")
 
 [connection signal="area_entered" from="SlimeHitBox" to="." method="_on_slime_hit_box_area_entered"]
-[connection signal="area_exited" from="SlimeHitBox" to="." method="_on_slime_hit_box_area_exited"]
+[connection signal="body_entered" from="SlimeHitBox" to="." method="_on_slime_hit_box_body_entered"]
 [connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]

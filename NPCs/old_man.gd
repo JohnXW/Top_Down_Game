@@ -7,7 +7,6 @@ func _process(delta):
 
 
 func _on_convo_area_body_entered(body):
-	print(body)
 	if body.name == "Player":
 		dialogBubble.visible = true
 

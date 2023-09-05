@@ -9,6 +9,7 @@ signal healthChange
 @onready var hurtEffect = $HitEffect
 @onready var HurtTimer = $HurtTimer
 @onready var AttackTImer = $AttackTimer
+@onready var Weapon = $Weapons
 @export var knockBackPower:int = 200
 #@onready var currentHP: int = PlayerVariables.currentHP
 var playerHurt:bool = false
@@ -19,6 +20,7 @@ var playerAttackingInProgress:bool = false
 
 func _ready():
 	hurtEffect.play("RESET")
+	Weapon.visible = false
 
 func handleInput():
 	movedirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -28,30 +30,44 @@ func handleInput():
 		velocity = movedirection * speed
 
 func updateAnimation(): 
+	var weaponFlip = Weapon.get_child(0)
 	if Input.is_action_just_pressed("ui_attack"):
+		Weapon.visible = true
 		playerAttackingInProgress = true
 		animations.play("attack_" + direction)
 		AttackTImer.start()
 		await AttackTImer.timeout
 		playerAttackingInProgress = false
+		Weapon.visible = false
 	elif playerAttackingInProgress == false:
 		if velocity.length() == 0:
 			animations.stop()
 		
 		else:
-			direction = "down"
-			if velocity.x < 0: direction = "left"
-			elif velocity.x > 0: direction = "right"
-			elif velocity.y < 0: direction = "up"
+			if velocity.x < 0: 
+				direction = "left"
+				Weapon.rotation_degrees = 90
+				Weapon.position = Vector2(-8, -4)
+			elif velocity.x > 0: 
+				direction = "right"
+				Weapon.rotation_degrees = 270
+				Weapon.position = Vector2(8, -4)
+			elif velocity.y > 0:
+				direction = "down"
+				Weapon.rotation_degrees = 0
+				Weapon.position = Vector2(0, 0)
+			elif velocity.y < 0: 
+				direction = "up"
+				Weapon.rotation_degrees = 180
+				Weapon.position = Vector2(0, -16)
 		
 		animations.play("walk_" + direction)
 	
-#func handleCollision():
-#	for i in get_slide_collision_count():
-#		var collision = get_slide_collision(i)
-#		var collider = collision.get_collider()
-##		print_debug(collider.name)
-
+func _input(event):
+	if event.is_action_pressed("ui_attack"):
+		PlayerVariables.playerCurrentAttack = true
+		
+	
 func _physics_process(delta):
 	handleInput()
 	move_and_slide()

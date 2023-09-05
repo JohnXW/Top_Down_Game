@@ -55,7 +55,6 @@ func _physics_process(delta):
 
 
 func _on_vision_body_entered(body):
-	print(body)
 	if body.name =="Player":
 		player = body
 		playerChase = true
@@ -67,17 +66,18 @@ func _on_vision_body_exited(body):
 		playerChase = false
 
 
-func _on_slime_hit_box_area_entered(area):
-	if area.name == "Player": #will not work bc area will not be player
-		playerCanAttack = true
-
-
-func _on_slime_hit_box_area_exited(area):
-	if area.name == "Player":
-		playerCanAttack = false
-
 func handleDamage():
+#	print(slimeHealth)
 	if playerCanAttack and PlayerVariables.playerCurrentAttack == true:
+		print("slime - 10")
 		slimeHealth -= 10
 		if slimeHealth <= 0:
 			self.queue_free()
+
+
+
+
+func _on_slime_hit_box_area_entered(area):
+	playerCanAttack=true
+	print(area)
+
