@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c205vynlsff1m"]
+
+[ext_resource type="PackedScene" uid="uid://c1hfjtqvb4kcq" path="res://Items/collectable.tscn" id="1_yndn1"]
+[ext_resource type="Texture2D" uid="uid://1ife816fb3df" path="res://NinjaAdventure/Items/Potion/LifePot.png" id="2_1sd06"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyled"]
+resource_local_to_scene = true
+size = Vector2(9, 11)
+
+[node name="LifePotion" instance=ExtResource("1_yndn1")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_dyled")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_1sd06")

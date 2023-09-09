@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bkuew3dp2ktxs" path="res://NinjaAdventure/Items/Weapons/Fork/SpriteInHand.png" id="1_cej4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtoea"]
-size = Vector2(7, 12)
+size = Vector2(7, 6)
 
 [node name="Weapons" type="Area2D"]
 collision_layer = 3
@@ -13,5 +13,6 @@ position = Vector2(0, 6)
 texture = ExtResource("1_cej4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_jtoea")
+disabled = true

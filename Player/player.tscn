@@ -59,7 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_istmc"]
 resource_name = "attack_down"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,7 +75,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_2l22g"]
 resource_name = "attack_left"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -91,7 +91,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5lngg"]
 resource_name = "attack_right"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -107,7 +107,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1qnst"]
 resource_name = "attack_up"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -249,6 +249,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_6a7cy")
 
@@ -265,9 +266,12 @@ wait_time = 0.8
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.1
 
 [node name="Weapons" parent="." instance=ExtResource("3_pcrms")]
+visible = false
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dex411h3uxv4p"]
+[gd_scene load_steps=13 format=3 uid="uid://dex411h3uxv4p"]
 
 [ext_resource type="Texture2D" uid="uid://b35bfhb24i42b" path="res://Art/TilesetFloor.png" id="1_2qax7"]
 [ext_resource type="Texture2D" uid="uid://d0pd8umgilhgn" path="res://Art/TilesetHouse.png" id="2_ul8o7"]
+[ext_resource type="PackedScene" uid="uid://c205vynlsff1m" path="res://Items/life_potion.tscn" id="3_07725"]
 [ext_resource type="Texture2D" uid="uid://c1oaloj4lq1nu" path="res://Art/TilesetNature.png" id="3_j4vmv"]
 [ext_resource type="Texture2D" uid="uid://cf2cjg5815e02" path="res://Art/SpriteSheet16x16.png" id="4_8d8ky"]
+[ext_resource type="PackedScene" uid="uid://wr524jgodbd1" path="res://Items/lance.tscn" id="4_qgoe4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opb1e"]
 texture = ExtResource("1_2qax7")
@@ -4297,6 +4299,11 @@ texture = ExtResource("2_ul8o7")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 24, -40, 8, 24, 8, 24, 24)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iyjou"]
+resource_name = "Items"
+scenes/2/scene = ExtResource("3_07725")
+scenes/3/scene = ExtResource("4_qgoe4")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpj15"]
 texture = ExtResource("3_j4vmv")
 2:0/0 = 0
@@ -5136,6 +5143,7 @@ sources/0 = SubResource("TileSetAtlasSource_opb1e")
 sources/4 = SubResource("TileSetAtlasSource_kpj15")
 sources/5 = SubResource("TileSetAtlasSource_i5kta")
 sources/1 = SubResource("TileSetAtlasSource_px05b")
+sources/2 = SubResource("TileSetScenesCollectionSource_iyjou")
 
 [node name="TileMap" type="TileMap"]
 y_sort_enabled = true
@@ -5156,10 +5164,17 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
-layer_3/name = "Border"
+layer_3/name = "Items"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
-layer_3/z_index = -1
+layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array()
+layer_4/name = "Border"
+layer_4/enabled = true
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = -1
+layer_4/tile_data = PackedInt32Array()
