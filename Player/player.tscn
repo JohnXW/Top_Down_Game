@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdy6mx4d0w0lh"]
+[gd_scene load_steps=20 format=3 uid="uid://cdy6mx4d0w0lh"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_d4e4b"]
 [ext_resource type="Texture2D" uid="uid://emsvb5p08hsh" path="res://NinjaAdventure/Actor/Characters/GreenNinja/PlayerSprite.png" id="1_v2hfv"]
+[ext_resource type="Resource" uid="uid://orxciegq4pjo" path="res://Inventory/player_inventory.tres" id="2_a3cqt"]
 [ext_resource type="PackedScene" uid="uid://ctxsju4hyn3be" path="res://Player/weapons.tscn" id="3_pcrms"]
 
 [sub_resource type="Animation" id="Animation_u41vj"]
@@ -216,6 +217,7 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_d4e4b")
+inventory = ExtResource("2_a3cqt")
 
 [node name="HitEffect" type="AnimationPlayer" parent="."]
 libraries = {

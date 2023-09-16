@@ -13,7 +13,9 @@ signal attacked
 @onready var weapon = $Weapons
 @onready var weaponCollision = weapon.get_child(1)
 @export var knockBackPower:int = 200
-#@onready var currentHP: int = PlayerVariables.currentHP
+
+@export var inventory: Inventory
+
 var playerHurt:bool = false
 var movedirection
 var direction = "down"
