@@ -109,7 +109,7 @@ func _on_animation_player_animation_finished(anim_name):
 		PlayerVariables.playerCurrentAttack = false
 		playerAttackingInProgress = false
 #		weaponCollision.disabled = true
-		attacked.emit(false)
+#		attacked.emit(false)
 
 
 func _on_hurt_box_area_entered(area):
